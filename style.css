@@ -1,0 +1,428 @@
+/* ==========================================================================
+   Tokens
+   ========================================================================== */
+:root {
+  --bg: #11151c;
+  --surface: #1b212c;
+  --surface-border: #2a3240;
+  --text: #ece8de;
+  --text-muted: #8891a0;
+  --accent: #d9a441;
+  --accent-soft: rgba(217, 164, 65, 0.14);
+  --moss: #6b8f71;
+  --moss-soft: rgba(107, 143, 113, 0.14);
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+
+  --max-width: 760px;
+  --rail-offset: 2.25rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   Header / Nav
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem clamp(1.25rem, 5vw, 3rem);
+  background: rgba(17, 21, 28, 0.88);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav-list {
+  display: flex;
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.15s ease;
+}
+
+.nav-list a:hover,
+.nav-list a:focus-visible {
+  color: var(--accent);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+
+.nav-toggle span {
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   Layout / Journal rail
+   ========================================================================== */
+main {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 2rem) 4rem;
+}
+
+.journal-rail {
+  position: absolute;
+  top: 2rem;
+  bottom: 4rem;
+  left: calc(clamp(1.25rem, 5vw, 2rem) + var(--rail-offset));
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--surface-border) 4%,
+    var(--surface-border) 96%,
+    transparent
+  );
+}
+
+.entry {
+  position: relative;
+  padding: 3.5rem 0 3.5rem calc(var(--rail-offset) + 1.5rem);
+}
+
+.entry::before {
+  content: "";
+  position: absolute;
+  left: var(--rail-offset);
+  top: 4rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+
+.entry-date {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.entry-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  font-weight: 600;
+  margin: 0 0 1.75rem;
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+  padding-top: 2.5rem;
+}
+
+.hero::before {
+  top: 2.7rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 6vw, 3.25rem);
+  line-height: 1.15;
+  font-weight: 500;
+  margin: 0 0 1.5rem;
+}
+
+.hero-title span {
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.hero-lede {
+  max-width: 54ch;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin: 0 0 2.25rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #11151c;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  background: #e6b457;
+}
+
+.btn-ghost {
+  color: var(--text);
+  border: 1px solid var(--surface-border);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   Skills
+   ========================================================================== */
+.skill-group {
+  margin-bottom: 1.75rem;
+}
+
+.skill-group-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tag {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  color: var(--text);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+}
+
+.tag-learning {
+  background: var(--moss-soft);
+  border-color: var(--moss);
+  color: var(--moss);
+}
+
+.tag-list-small .tag {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem;
+}
+
+/* ==========================================================================
+   Projects
+   ========================================================================== */
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+}
+
+.project-desc {
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.link-arrow {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.link-arrow:hover {
+  border-color: var(--accent);
+}
+
+/* ==========================================================================
+   Education
+   ========================================================================== */
+.edu-item {
+  margin-bottom: 1.5rem;
+}
+
+.edu-degree {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem;
+}
+
+.edu-meta {
+  color: var(--text-muted);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+.contact-lede {
+  color: var(--text-muted);
+  max-width: 48ch;
+  margin: 0 0 1.5rem;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-list a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.05rem;
+  border-bottom: 1px solid var(--surface-border);
+  padding-bottom: 0.2rem;
+  width: fit-content;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.contact-list a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  text-align: center;
+  padding: 2rem 1rem 2.5rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--surface-border);
+}
+
+/* ==========================================================================
+   Focus visibility (accessibility)
+   ========================================================================== */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 640px) {
+  :root {
+    --rail-offset: 0.85rem;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-list {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    background: var(--surface);
+    border-bottom: 1px solid var(--surface-border);
+    padding: 1rem clamp(1.25rem, 5vw, 2rem);
+    gap: 1rem;
+    display: none;
+  }
+
+  .nav-list.open {
+    display: flex;
+  }
+
+  .entry {
+    padding-left: calc(var(--rail-offset) + 1.1rem);
+  }
+}

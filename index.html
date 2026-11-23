@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[YOUR NAME] — Portfolio</title>
+  <meta name="description" content="Portfolio of [YOUR NAME] — projects, skills, and background." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="#top" class="logo">[YN]</a>
+    <nav class="site-nav">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-list" id="navList">
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="journal-rail" aria-hidden="true"></div>
+
+    <!-- HERO -->
+    <section class="entry hero" id="top">
+      <p class="entry-date">Entry 01 — Introduction</p>
+      <h1 class="hero-title">Hi, I'm <span>[YOUR NAME]</span>.<br />I build things for the web.</h1>
+      <p class="hero-lede">
+        [One or two sentences about who you are and what you're focused on right now —
+        e.g. "I'm a backend developer learning frontend and DevOps practices,
+        documenting the journey one project at a time."]
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">See my work</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="entry" id="skills">
+      <p class="entry-date">Entry 02 — Skills</p>
+      <h2 class="entry-title">What I work with</h2>
+
+      <div class="skill-group">
+        <h3 class="skill-group-title">Languages &amp; Frameworks</h3>
+        <ul class="tag-list">
+          <li class="tag">JavaScript</li>
+          <li class="tag">Python</li>
+          <li class="tag">HTML &amp; CSS</li>
+          <li class="tag">[Add yours]</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h3 class="skill-group-title">Tools &amp; Platforms</h3>
+        <ul class="tag-list">
+          <li class="tag">Git &amp; GitHub</li>
+          <li class="tag">VS Code</li>
+          <li class="tag">GitHub Actions</li>
+          <li class="tag">[Add yours]</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h3 class="skill-group-title">Currently learning</h3>
+        <ul class="tag-list">
+          <li class="tag tag-learning">CI/CD pipelines</li>
+          <li class="tag tag-learning">[Add yours]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="entry" id="projects">
+      <p class="entry-date">Entry 03 — Projects</p>
+      <h2 class="entry-title">Things I've built</h2>
+
+      <div class="project-card">
+        <h3 class="project-title">[Project One Name]</h3>
+        <p class="project-desc">
+          [One or two sentences on what it does and the problem it solves.]
+        </p>
+        <ul class="tag-list tag-list-small">
+          <li class="tag">React</li>
+          <li class="tag">Node.js</li>
+        </ul>
+        <div class="project-links">
+          <a href="#" class="link-arrow">View repo</a>
+          <a href="#" class="link-arrow">Live demo</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3 class="project-title">[Project Two Name]</h3>
+        <p class="project-desc">
+          [One or two sentences on what it does and the problem it solves.]
+        </p>
+        <ul class="tag-list tag-list-small">
+          <li class="tag">Python</li>
+          <li class="tag">Flask</li>
+        </ul>
+        <div class="project-links">
+          <a href="#" class="link-arrow">View repo</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3 class="project-title">This portfolio</h3>
+        <p class="project-desc">
+          A static site built from scratch with HTML/CSS/JS, deployed via GitHub Pages
+          with a GitHub Actions CI/CD pipeline.
+        </p>
+        <ul class="tag-list tag-list-small">
+          <li class="tag">HTML</li>
+          <li class="tag">CSS</li>
+          <li class="tag">GitHub Actions</li>
+        </ul>
+        <div class="project-links">
+          <a href="#" class="link-arrow">View repo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="entry" id="education">
+      <p class="entry-date">Entry 04 — Education</p>
+      <h2 class="entry-title">Background</h2>
+
+      <div class="edu-item">
+        <h3 class="edu-degree">[Degree, e.g. B.Tech in Computer Science]</h3>
+        <p class="edu-meta">[Institution Name] · [Year – Year]</p>
+      </div>
+
+      <div class="edu-item">
+        <h3 class="edu-degree">[Certification or course, if any]</h3>
+        <p class="edu-meta">[Provider] · [Year]</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="entry entry-contact" id="contact">
+      <p class="entry-date">Entry 05 — Contact</p>
+      <h2 class="entry-title">Let's talk</h2>
+      <p class="contact-lede">
+        I'm open to opportunities, collaborations, or just a conversation about what I'm building.
+      </p>
+      <ul class="contact-list">
+        <li><a href="mailto:you@example.com">you@example.com</a></li>
+        <li><a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built and deployed by [YOUR NAME] · <span id="year"></span></p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
