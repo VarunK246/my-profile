@@ -16,7 +16,6 @@
   --font-body: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
 
   --max-width: 760px;
-  --rail-offset: 2.25rem;
 }
 
 * {
@@ -57,7 +56,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.1rem clamp(1.25rem, 5vw, 3rem);
+  padding: 1.1rem max(clamp(1.25rem, 5vw, 3rem), calc((100% - 1200px) / 2));
   background: rgba(17, 21, 28, 0.88);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--surface-border);
@@ -113,42 +112,14 @@ body {
    ========================================================================== */
 main {
   position: relative;
-  max-width: var(--max-width);
+  max-width: 1296px;
   margin: 0 auto;
-  padding: 0 clamp(1.25rem, 5vw, 2rem) 4rem;
-}
-
-.journal-rail {
-  position: absolute;
-  top: 2rem;
-  bottom: 4rem;
-  left: calc(clamp(1.25rem, 5vw, 2rem) + var(--rail-offset));
-  width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--surface-border) 4%,
-    var(--surface-border) 96%,
-    transparent
-  );
+  padding: 0 clamp(1.25rem, 5vw, 3rem) 4rem;
 }
 
 .entry {
-  position: relative;
-  padding: 3.5rem 0 3.5rem calc(var(--rail-offset) + 1.5rem);
-}
-
-.entry::before {
-  content: "";
-  position: absolute;
-  left: var(--rail-offset);
-  top: 4rem;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--accent);
-  transform: translateX(-50%);
-  box-shadow: 0 0 0 4px var(--bg);
+  padding: 4.5rem 0;
+  border-top: 1px solid var(--surface-border);
 }
 
 .entry-date {
@@ -161,41 +132,164 @@ main {
 
 .entry-title {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 4vw, 2rem);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
   font-weight: 600;
-  margin: 0 0 1.75rem;
+  margin: 0 0 2.5rem;
 }
 
 /* ==========================================================================
    Hero
    ========================================================================== */
 .hero {
-  padding-top: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 66px);
+  display: flex;
+  align-items: center;
+  padding: 3rem clamp(1.25rem, 5vw, 3rem);
 }
 
-.hero::before {
-  top: 2.7rem;
+.hero-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
 }
 
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.1rem, 6vw, 3.25rem);
-  line-height: 1.15;
+.hero-eyebrow {
+  margin: 0 0 1rem;
+  color: var(--accent);
   font-weight: 500;
-  margin: 0 0 1.5rem;
+  letter-spacing: 0.04em;
 }
 
-.hero-title span {
+.hero-name {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(3.4rem, 9.5vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.hero-name-last {
   color: var(--accent);
   font-style: italic;
   font-weight: 500;
 }
 
+.hero-role {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 1.5rem 0 1.25rem;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  font-weight: 500;
+  color: var(--text);
+}
+
+.hero-role::before {
+  content: "";
+  width: 3rem;
+  height: 2px;
+  background: var(--accent);
+}
+
 .hero-lede {
-  max-width: 54ch;
+  max-width: 46ch;
   color: var(--text-muted);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   margin: 0 0 2.25rem;
+}
+
+/* Hero visual: morphing orb, rings and orbiting tech chips */
+.hero-visual {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 1;
+  justify-self: center;
+}
+
+.orb {
+  position: absolute;
+  inset: 22%;
+  background: conic-gradient(from 0deg, var(--accent), #f0c872, var(--moss), #2f4a3a, var(--accent));
+  border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%;
+  filter: blur(2px);
+  box-shadow: 0 0 80px 10px var(--accent-soft), 0 0 140px 30px var(--moss-soft);
+  animation: morph 9s ease-in-out infinite, spin 22s linear infinite;
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed var(--surface-border);
+}
+
+.ring-1 { inset: 8%;  animation: spin 40s linear infinite; }
+.ring-2 { inset: -2%; animation: spin 60s linear infinite reverse; border-style: solid; opacity: 0.6; }
+
+.orbit {
+  position: absolute;
+  border-radius: 50%;
+  animation: spin 28s linear infinite;
+}
+
+.orbit-1 { inset: 8%;  animation-duration: 26s; }
+.orbit-2 { inset: -2%; animation-duration: 34s; animation-direction: reverse; }
+.orbit-3 { inset: 8%;  animation-duration: 26s; animation-delay: -13s; }
+.orbit-4 { inset: -2%; animation-duration: 34s; animation-delay: -17s; animation-direction: reverse; }
+
+.chip {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding: 0.35rem 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  transform: translate(-50%, -50%);
+  animation: unspin 26s linear infinite;
+}
+
+.orbit-2 .chip, .orbit-4 .chip { animation-duration: 34s; animation-direction: reverse; }
+.orbit-3 .chip { animation-delay: -13s; }
+.orbit-4 .chip { animation-delay: -17s; }
+
+@keyframes spin   { to { transform: rotate(360deg); } }
+@keyframes unspin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+@keyframes morph {
+  0%, 100% { border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%; }
+  33%      { border-radius: 42% 58% 40% 60% / 58% 42% 58% 42%; }
+  66%      { border-radius: 52% 48% 62% 38% / 40% 60% 40% 60%; }
+}
+
+@media (max-width: 800px) {
+  .hero { min-height: auto; padding-top: 2.5rem; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-visual { max-width: 300px; }
+  .ring-2, .orbit-2, .orbit-4 { inset: 6%; }
+  .ring-1, .orbit-1, .orbit-3 { inset: 18%; }
+  .orb { inset: 30%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual * { animation: none !important; }
 }
 
 .hero-actions {
@@ -237,15 +331,32 @@ main {
 /* ==========================================================================
    Skills
    ========================================================================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
 .skill-group {
-  margin-bottom: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 12px;
+  padding: 1.75rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.skill-group:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
 }
 
 .skill-group-title {
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: var(--text-muted);
-  margin: 0 0 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 1.1rem;
 }
 
 .tag-list {
@@ -258,7 +369,7 @@ main {
 }
 
 .tag {
-  background: var(--surface);
+  background: var(--bg);
   border: 1px solid var(--surface-border);
   color: var(--text);
   padding: 0.4rem 0.85rem;
@@ -280,31 +391,80 @@ main {
 /* ==========================================================================
    Projects
    ========================================================================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+  gap: 1.5rem;
+  counter-reset: project;
+}
+
 .project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  counter-increment: project;
   background: var(--surface);
   border: 1px solid var(--surface-border);
-  border-left: 3px solid var(--accent);
-  border-radius: 4px;
-  padding: 1.5rem 1.75rem;
-  margin-bottom: 1.25rem;
+  border-radius: 12px;
+  padding: 2rem;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
+
+.project-card::before {
+  content: "0" counter(project);
+  display: block;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2.75rem;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.project-card:hover::before { opacity: 1; }
+.project-card:hover::after { transform: scaleX(1); }
 
 .project-title {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  line-height: 1.25;
   font-weight: 600;
-  margin: 0 0 0.6rem;
+  margin: 0 0 0.75rem;
 }
 
 .project-desc {
   color: var(--text-muted);
-  margin: 0 0 1rem;
+  margin: 0 0 1.25rem;
 }
+
+.project-card .tag-list { margin-bottom: 0.5rem; }
 
 .project-links {
   display: flex;
   gap: 1.25rem;
-  margin-top: 1rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
 }
 
 .link-arrow {
@@ -323,15 +483,37 @@ main {
 /* ==========================================================================
    Education
    ========================================================================== */
+.edu-list {
+  border-top: 1px solid var(--surface-border);
+}
+
 .edu-item {
-  margin-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(140px, 240px) 1fr;
+  gap: 1rem 2rem;
+  align-items: baseline;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.edu-year {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--accent);
 }
 
 .edu-degree {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
   font-weight: 600;
   margin: 0 0 0.3rem;
+  transition: color 0.2s ease;
+}
+
+.edu-item:hover .edu-degree {
+  color: var(--accent);
 }
 
 .edu-meta {
@@ -343,34 +525,54 @@ main {
 /* ==========================================================================
    Contact
    ========================================================================== */
+.entry-contact .entry-title {
+  font-size: clamp(2.6rem, 8vw, 6rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
 .contact-lede {
   color: var(--text-muted);
+  font-size: 1.15rem;
   max-width: 48ch;
-  margin: 0 0 1.5rem;
+  margin: 0 0 2.5rem;
+}
+
+.contact-email {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.5rem, 4.5vw, 3rem);
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent-soft);
+  padding-bottom: 0.2rem;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.contact-email span {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.contact-email:hover {
+  border-color: var(--accent);
+  color: #f0c872;
+}
+
+.contact-email:hover span {
+  transform: translateX(6px);
 }
 
 .contact-list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 2.5rem 0 0;
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.contact-list a {
-  color: var(--text);
-  text-decoration: none;
-  font-size: 1.05rem;
-  border-bottom: 1px solid var(--surface-border);
-  padding-bottom: 0.2rem;
-  width: fit-content;
-  transition: color 0.15s ease, border-color 0.15s ease;
-}
-
-.contact-list a:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+  flex-wrap: wrap;
+  gap: 0.9rem;
 }
 
 /* ==========================================================================
@@ -397,8 +599,9 @@ button:focus-visible {
    Responsive
    ========================================================================== */
 @media (max-width: 640px) {
-  :root {
-    --rail-offset: 0.85rem;
+  .edu-item {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
   }
 
   .nav-toggle {
@@ -420,9 +623,5 @@ button:focus-visible {
 
   .nav-list.open {
     display: flex;
-  }
-
-  .entry {
-    padding-left: calc(var(--rail-offset) + 1.1rem);
   }
 }

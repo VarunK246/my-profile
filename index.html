@@ -23,59 +23,85 @@
       <ul class="nav-list" id="navList">
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <div class="journal-rail" aria-hidden="true"></div>
-
-    <!-- HERO -->
-    <section class="entry hero" id="top">
-      <p class="entry-date">Entry 01 — Introduction</p>
-      <h1 class="hero-title">Hi, I'm <span>Varun Karthik</span>.<br />I build things for the web.</h1>
-      <p class="hero-lede">
-      Full-stack developer with 5 years of experience building high-traffic applications, combining expertise in React and
-TypeScript based micro frontend architecture with backend microservice development using Java/SpringBoot.
-Proficient in complex pharmacy domain workflows.
-      </p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">See my work</a>
-        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Hello, I'm</p>
+        <h1 class="hero-name">
+          <span class="hero-name-first">Varun</span>
+          <span class="hero-name-last">Karthik</span>
+        </h1>
+        <p class="hero-role">Full-Stack Developer</p>
+        <p class="hero-lede">
+          5 years building high-traffic apps with React, TypeScript and Java/Spring Boot,
+          with deep experience in pharmacy domain workflows.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">See my work</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
       </div>
-    </section>
 
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orb"></div>
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="orbit orbit-1"><span class="chip">React</span></div>
+        <div class="orbit orbit-2"><span class="chip">TypeScript</span></div>
+        <div class="orbit orbit-3"><span class="chip">Java</span></div>
+        <div class="orbit orbit-4"><span class="chip">Spring Boot</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main>
     <!-- SKILLS -->
     <section class="entry" id="skills">
       <p class="entry-date">Entry 02 — Skills</p>
       <h2 class="entry-title">What I work with</h2>
 
-      <div class="skill-group">
-        <h3 class="skill-group-title">Languages &amp; Frameworks</h3>
-        <ul class="tag-list">
-          <li class="tag">JavaScript</li>
-          <li class="tag">Python</li>
-          <li class="tag">HTML &amp; CSS</li>
-          <li class="tag">Azure</li>
-        </ul>
-      </div>
-
-      <div class="skill-group">
-        <h3 class="skill-group-title">Tools &amp; Platforms</h3>
-        <ul class="tag-list">
-          <li class="tag">Git &amp; GitHub</li>
-          <li class="tag">VS Code</li>
-          <li class="tag">GitHub Actions</li>
-        </ul>
-      </div>
-
-      <div class="skill-group">
-        <h3 class="skill-group-title">Currently learning</h3>
-        <ul class="tag-list">
-          <li class="tag tag-learning">CI/CD pipelines</li>
-        </ul>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3 class="skill-group-title">Frontend</h3>
+          <ul class="tag-list">
+            <li class="tag">React</li>
+            <li class="tag">TypeScript</li>
+            <li class="tag">JavaScript</li>
+            <li class="tag">HTML &amp; CSS</li>
+            <li class="tag">Micro frontends</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3 class="skill-group-title">Backend</h3>
+          <ul class="tag-list">
+            <li class="tag">Java</li>
+            <li class="tag">Spring Boot</li>
+            <li class="tag">Microservices</li>
+            <li class="tag">Python</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3 class="skill-group-title">Tools &amp; Platforms</h3>
+          <ul class="tag-list">
+            <li class="tag">Git &amp; GitHub</li>
+            <li class="tag">GitHub Actions</li>
+            <li class="tag">Azure</li>
+            <li class="tag">VS Code</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3 class="skill-group-title">Currently learning</h3>
+          <ul class="tag-list">
+            <li class="tag tag-learning">CI/CD pipelines</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -84,52 +110,74 @@ Proficient in complex pharmacy domain workflows.
       <p class="entry-date">Entry 03 — Projects</p>
       <h2 class="entry-title">Things I've built</h2>
 
-      <div class="project-card">
-        <h3 class="project-title">Clinical Intelligence System — Retrieval-Augmented</h3>
-        <p class="project-desc">
-        Architected and implemented a domain-specific RAG pipeline using OpenAI's text-embedding-3-small and gpt-4.1-
-mini, with a ChromaDB vector store, to deliver accurate, context-grounded answers to complex clinical queries.
-        </p>
-        <ul class="tag-list tag-list-small">
-          <li class="tag">RAG</li>
-        </ul>
-        <div class="project-links">
-          <a href="#" class="link-arrow">View repo</a>
-          <a href="#" class="link-arrow">Live demo</a>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3 class="project-title">Clinical Intelligence System — Retrieval-Augmented</h3>
+          <p class="project-desc">
+          Architected and implemented a domain-specific RAG pipeline using OpenAI's text-embedding-3-small and gpt-4.1-
+  mini, with a ChromaDB vector store, to deliver accurate, context-grounded answers to complex clinical queries.
+          </p>
+          <ul class="tag-list tag-list-small">
+            <li class="tag">RAG</li>
+          </ul>
         </div>
-      </div>
 
-
-      <div class="project-card">
-        <h3 class="project-title">This portfolio</h3>
-        <p class="project-desc">
-          A static site built from scratch with HTML/CSS/JS, deployed via GitHub Pages
-          with a GitHub Actions CI/CD pipeline.
-        </p>
-        <ul class="tag-list tag-list-small">
-          <li class="tag">HTML</li>
-          <li class="tag">CSS</li>
-          <li class="tag">GitHub Actions</li>
-        </ul>
-        <div class="project-links">
-          <a href="#" class="link-arrow">View repo</a>
+        <div class="project-card">
+          <h3 class="project-title">This portfolio</h3>
+          <p class="project-desc">
+            A static site built with HTML/CSS/JS through vibe coding: I described the design
+            and iterated with an AI coding assistant. Deployed via GitHub Pages with a
+            GitHub Actions CI/CD pipeline.
+          </p>
+          <ul class="tag-list tag-list-small">
+            <li class="tag">HTML</li>
+            <li class="tag">CSS</li>
+            <li class="tag">GitHub Actions</li>
+            <li class="tag">Vibe coding</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/VarunK246/my-profile" class="link-arrow">View repo</a>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- EDUCATION -->
     <section class="entry" id="education">
-      <p class="entry-date">Entry 04 — Education</p>
+      <p class="entry-date">Entry 04 - Experience</p>
       <h2 class="entry-title">Background</h2>
 
-      <div class="edu-item">
-        <h3 class="edu-degree">B.Tech in Computer Science</h3>
-        <p class="edu-meta">SASTRA University · 2017 – 2026</p>
+      <div class="edu-list">
+        <div class="edu-item">
+          <p class="edu-year">2025-Present</p>
+          <div>
+            <h3 class="edu-degree">Full Stack Engineer</h3>
+            <p class="edu-meta">Optum</p>
+          </div>
+        </div>
+        </div>
       </div>
 
-      <div class="edu-item">
-        <h3 class="edu-degree">AZ900 - Azure Fundamentals</h3>
-        <p class="edu-meta">Azure · 2025</p>
+      <div class="edu-list">
+        <div class="edu-item">
+          <p class="edu-year">2021-2024</p>
+          <div>
+            <h3 class="edu-degree">Associate Software Engineer</h3>
+            <p class="edu-meta">Optum</p>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="edu-list">
+        <div class="edu-item">
+          <p class="edu-year">2017 – 2021</p>
+          <div>
+            <h3 class="edu-degree">B.Tech in Computer Science</h3>
+            <p class="edu-meta">SASTRA University</p>
+          </div>
+        </div>
+        </div>
       </div>
     </section>
 
@@ -140,10 +188,10 @@ mini, with a ChromaDB vector store, to deliver accurate, context-grounded answer
       <p class="contact-lede">
         I'm open to opportunities, collaborations, or just a conversation about what I'm building.
       </p>
+      <a class="contact-email" href="mailto:varunkarthik246@gmail.com">varunkarthik246@gmail.com<span aria-hidden="true">&rarr;</span></a>
       <ul class="contact-list">
-        <li><a href="mailto:you@example.com">you@example.com</a></li>
-        <li><a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a class="btn btn-ghost" href="https://github.com/VarunK246" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a class="btn btn-ghost" href="www.linkedin.com/in/varun-karthik-38b244168" target="_blank" rel="noopener">LinkedIn</a></li>
       </ul>
     </section>
   </main>
